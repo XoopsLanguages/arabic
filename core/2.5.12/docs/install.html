@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>XOOPS Installation Instructions</title>
+    <meta name="keywords" content="XOOPS" />
+    <meta name="description" content="XOOPS installation guide" />
+    <style type="text/css">
+        body {
+            font-family:                        Lucida Grande, Verdana, Geneva, Sans-serif;
+            margin:                             0;
+            padding:                            0;
+            font-size:                          13px;
+            color:                              #333;
+            background-color:                   #fff;
+        }
+
+        a {
+            color:                              #3D9DD3;
+            background-color:                   transparent;
+            text-decoration:                    none;
+            font-weight:                        normal;
+        }
+
+        a:visited {
+            color:                              #3D9DD3;
+            background-color:                   transparent;
+            text-decoration:                    none;
+        }
+
+        a:hover {
+            color:                              #3D9DD3;
+            text-decoration:                    none;
+            background-color:                   transparent;
+        }
+
+        .page {
+            background-color:                   #fff;
+            margin:                             10px 30px 0;
+            padding:                            0;
+        }
+
+        .page h1 {
+            background-color:                   transparent;
+            border-bottom:                      1px solid #999;
+            color:                              #000;
+            font-size:                          18px;
+            font-weight:                        bold;
+            margin:                             28px 0 16px 0;
+            padding:                            5px 0 6px 0;
+        }
+
+        .page h2 {
+            background-color:                   transparent;
+            color:                              #000;
+            font-size:                          16px;
+            font-weight:                        bold;
+            margin:                             28px 0 16px 0;
+            padding:                            5px 0 6px 0;
+        }
+
+        .page h3 {
+            background-color:                   transparent;
+            color:                              #000;
+            font-size:                          14px;
+            font-weight:                        bold;
+        }
+
+        .page ul {
+            margin:                             20px 0 15px 0;
+        }
+
+        .page li {
+            margin-bottom:                      9px;
+        }
+
+        .page li p {
+            margin-left:                        0;
+            margin-right:                       0;
+        }
+
+        p {    }
+
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <h1>تثبيت XOOPS</h1>
+
+    <h2>التثبيت لأول مرة</h2>
+    <h3>مقدمة:</h3>
+    <p>
+        <abbr title="نظام بوابة موجه للكائنات قابل للتوسع">XOOPS</abbr> هو نظام نشر ويب مفتوح المصدر
+        موجه للكائنات مكتوب بلغة PHP. إنه أداة مثالية لتطوير
+        مواقع مجتمعية ديناميكية صغيرة إلى كبيرة، بوابات داخلية للشركات، بوابات الشركات، المدونات وغيرها الكثير.
+    </p>
+    <p>
+        يتم إصدار XOOPS بموجب شروط
+        <a href="https://www.gnu.org/licenses/gpl-2.0.html" rel="external">رخصة جنو العمومية (GPL)</a>
+        الإصدار 2 أو أعلى، وهو مجاني للاستخدام والتعديل.
+        يمكن إعادة توزيعه مجانًا طالما التزمت بشروط التوزيع الخاصة برخصة GPL.
+    </p>
+
+    <h2>المتطلبات</h2>
+    <ul>
+        <li>خادم ويب (<a href="http://www.apache.org/" rel="external">Apache</a>، <a href="https://www.nginx.com/" rel="external">NGINX</a>، IIS، إلخ)</li>
+        <li><a href="https://www.php.net/" rel="external">PHP</a> 5.6.0 أو أعلى، يُوصى بـ 7.4 أو أعلى</li>
+        <li><a href="https://www.mysql.com/" rel="external">MySQL</a> 5.6 أو أعلى، يُوصى بـ MySQL 8.0 أو أعلى</li>
+    </ul>
+    <h3>قبل التثبيت</h3>
+    <ol>
+        <li>قم بإعداد خادم الويب، PHP، وخادم قاعدة البيانات بشكل صحيح.</li>
+        <li>قم بإعداد قاعدة بيانات لموقع XOOPS الخاص بك.</li>
+        <li>قم بإعداد حساب مستخدم وامنح المستخدم صلاحية الوصول إلى قاعدة البيانات.</li>
+        <li>اجعل الأدلة والملفات قابلة للكتابة: %s</li>
+        <li>لأسباب أمنية، يُنصح بشدة بنقل الدليلين التاليين خارج <a href="http://phpsec.org/projects/guide/3.html" rel="external">جذر المستند</a> وتغيير أسماء المجلدات: %s</li>
+        <li>قم بإنشاء (إذا لم تكن موجودة بالفعل) واجعل الأدلة قابلة للكتابة: %s</li>
+        <li>قم بتفعيل ملفات تعريف الارتباط (Cookies) وجافا سكريبت في متصفحك.</li>
+    </ol>
+
+    <h2>التثبيت محليًا</h2>
+    <p>إذا كنت تستخدم بيئة محلية للتطوير أو الاختبار، تأكد من استيفاء المتطلبات السابقة.
+        بمجرد الانتهاء من ذلك، انسخ محتويات دليل <em>htdocs</em> (من ملف توزيع XOOPS)
+        إلى مسار جذر المستند في بيئة الويب الخاصة بك. بمجرد نسخ الملفات هناك،
+        يمكنك بدء التثبيت بتوجيه متصفحك إلى "http://<em>yoursite.com</em>". سيبدأ هذا عملية التثبيت.
+    </p>
+
+    <h2>التثبيت على منصة مستضافة</h2>
+    <p>إذا كنت تعمل في بيئة مستضافة، قم بفك ضغط ملفات XOOPS محليًا أو على الخادم إذا كان لديك
+        وصول عبر الصدفة (مثل SSH). بمجرد الانتهاء، تأكد من نقل أو نسخ جميع ملفات XOOPS من دليل <em>htdocs</em>
+        إلى دليل الويب الجذر الخاص بك (عادةً ما يوفر مزود الخدمة هذا الموقع مع التعليمات).
+        بمجرد نسخ الملفات هناك، يمكنك بدء التثبيت بتوجيه متصفحك إلى
+        "http://<em>yoursite.com</em>". سيبدأ هذا عملية التثبيت.
+    </p>
+
+    <h2>متابعة التثبيت</h2>
+    <p>ما عليك سوى اتباع التعليمات خطوة بخطوة في برنامج التثبيت.</p>
+
+</div>
+</body>
+</html>
